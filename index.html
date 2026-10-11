@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دعوة زفاف</title>
+  <style>
+    :root {
+      --primary-color: #7a5c3e;
+      --bg-marble: url('Gemini_Generated_Image_pwc3rhpwc3rhpwc3.jfif');
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Amiri', 'Traditional Arabic', serif;
+      background-image: var(--bg-marble);
+      background-size: cover;
+      background-attachment: fixed;
+      overflow-x: hidden;
+      color: #333;
+    }
+
+    /* Hero Section / Gate Screen */
+    .hero-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .door-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 1.2s ease-in-out;
+    }
+
+    .door-open {
+      opacity: 0;
+    }
+
+    .hero-overlay {
+      position: relative;
+      z-index: 10;
+      color: #4a3b32;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(2px);
+      border-radius: 15px;
+    }
+
+    /* Content Section */
+    .main-content {
+      padding: 50px 20px;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid #d4af37;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Audio Background -->
+  <audio id="bg-music" loop>
+    <source src="wedding-music.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Hero / Door Section -->
+  <div class="hero-container" id="hero" onclick="openDoor()">
+    <img src="Gemini_Generated_Image_uuz7k9uuz7k9uuz7.jfif" class="door-image" alt="Door Opened">
+    <img src="Gemini_Generated_Image_pkf91epkf91epkf9.jfif" class="door-image" id="closedDoor" alt="Door Closed">
+    
+    <div class="hero-overlay" id="overlayText">
+      <p>بسم الله الرحمن الرحيم</p>
+      <h2>دعوة زفاف</h2>
+      <h1>عمر & لين</h1>
+      <p>اضغط للفتح</p>
+    </div>
+  </div>
+
+  <!-- Main Website Content -->
+  <div class="main-content" id="content">
+    <div class="card">
+      <h3>آية كريمة / عبارة ترحيبية</h3>
+      <p>"وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا"</p>
+    </div>
+
+    <div class="card">
+      <h3>تفاصيل الحفل</h3>
+      <p>اليوم: الجمعة | التاريخ: 18 كانون الأول</p>
+      <p>المكان: قاعة المراسيم</p>
+    </div>
+  </div>
+
+  <script>
+    function openDoor() {
+      const closedDoor = document.getElementById('closedDoor');
+      const overlayText = document.getElementById('overlayText');
+      const music = document.getElementById('bg-music');
+
+      // Animate Door Transition
+      closedDoor.classList.add('door-open');
+      overlayText.style.opacity = '0';
+      overlayText.style.transition = 'opacity 0.8s ease';
+
+      // Play Background Music
+      if (music) {
+        music.play().catch(e => console.log("Audio play blocked by browser"));
+      }
+
+      // Scroll to content smoothly after door opens
+      setTimeout(() => {
+        document.getElementById('content').scrollIntoView({ behavior: 'smooth' });
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
